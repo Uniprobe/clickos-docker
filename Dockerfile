@@ -1,4 +1,4 @@
-FROM ghcr.io/uniprobe/clickos:environment
+FROM ghcr.io/uniprobe/clickos:environment as builder
 
 ## Allow for Partial Caching
 ARG CACHE_TWEAK="Add the date to this arg to break the cache here"
