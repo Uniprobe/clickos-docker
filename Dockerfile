@@ -25,7 +25,7 @@ RUN mkdir -p /out \
  && mv ${CLICKOS_ROOT}/minios/build/* /out
 
 ## Multi-Stage Niceness
-FROM busybox
+FROM docker.io/busybox:latest
 
 COPY --from=builder /out/clickos_x86_64 /clickos/
 COPY --from=builder /out/clickos_x86_64.gz /clickos/
