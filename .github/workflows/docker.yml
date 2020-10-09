@@ -33,6 +33,23 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          file: Dockerfile.environment
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ghcr.io/${{ steps.extract_owner.outputs.owner }}/clickos:environment
+          no-cache: true
+          labels: |
+            org.opencontainers.image.title=${{ github.event.repository.name }}
+            org.opencontainers.image.url=${{ github.event.repository.html_url }}
+            org.opencontainers.image.source=${{ github.event.repository.html_url }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.licenses=${{ github.event.repository.license.spdx_id }}
+      -
+        name: Build and Push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
           file: Dockerfile
           platforms: linux/amd64
           push: true
